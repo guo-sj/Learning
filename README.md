@@ -14,22 +14,16 @@ There may have two subjects descripted as following:
 And the hierarchy is:
 
 Learning  
-    |  
-    |----Language  
-    |        |  
-    |        |----Swift  
-    |        |        |  
-    |        |        |----README.md  
-    |        |        |---- ...  
-    |        |---- ...  
-    |  
-    |----Technology  
-    |        |  
-    |        |----Cordova  
-    |        |        |  
-    |        |        |----README.md  
-    |        |        |---- ...  
-    |        |---- ...  
-    |  
+- README.md
+- Language  
+    - Swift  
+        - README.md  
+        - ...
+    - ...
+- Technology  
+    - Cordova  
+        - README.md  
+        - ...
+    - ...
 
 

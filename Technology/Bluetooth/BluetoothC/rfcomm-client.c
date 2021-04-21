@@ -4,11 +4,14 @@
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 
+#define SENDMESSAGE    "hello!\nI finally send this message successfully"
+
 int main(int argc, char **argv)
 {
     struct sockaddr_rc addr = { 0 };
     int s, status;
-    char dest[18] = "01:23:45:67:89:AB";
+    //char dest[18] = "01:23:45:67:89:AB";
+    char dest[18] = "A4:34:D9:1B:CD:75";    // destination device's bluetooth address
 
     /* allocate a socket */
     s = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
@@ -23,7 +26,7 @@ int main(int argc, char **argv)
 
     /* send a message */
     if (status == 0)
-        status = write(s, "hello!", 6);
+        status = write(s, SENDMESSAGE, sizeof(SENDMESSAGE));
 
     if (status < 0) perror("uh oh");
 

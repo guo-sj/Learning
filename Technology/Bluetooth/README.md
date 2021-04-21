@@ -1,6 +1,6 @@
 # Bluetooth
 
-This directory contains some \*.c file in tutorial [BTBook](https://people.csail.mit.edu/rudolph/Teaching/Articles/BTBook.pdf)
+This directory contains some \*.c and \*.py file in tutorial [BTBook](http://people.csail.mit.edu/albert/bluez-intro/index.html)
 
 ## Environment
 Before started in a new machine, run this first:
@@ -12,6 +12,7 @@ $ sudo apt install python  /
     gir1.2-gnomebluetooth-1.0 /
     gnome-bluetooth /
     libbluetooth3 /
+    libbluetooth-dev/
     libgnome-bluetooth13 /
     pulseaudio-module-bluetooth /
     python-bluez /

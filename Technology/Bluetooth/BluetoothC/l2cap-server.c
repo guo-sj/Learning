@@ -19,7 +19,7 @@ int main(int argc, char **argv)
      * bluetooth adapter */
     loc_addr.l2_family = AF_BLUETOOTH;
     loc_addr.l2_bdaddr = *BDADDR_ANY;
-    loc_addr.l2_psm = htobs(0x1001);
+    loc_addr.l2_psm = htobs(0x1001);    // convert to bluetooth byte order (little-endian)
 
     bind(s, (struct sockaddr *)&loc_addr, sizeof(loc_addr));    // assign address(loc_addr) to socket(s)
 

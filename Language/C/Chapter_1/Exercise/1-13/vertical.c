@@ -1,59 +1,79 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX 100
+#define MAXLENGTH 50
+
 /* Write a program to print a histogram of the lengths of words in its 
  * input. Vertical version */
-int getmax(int length[], int *gmax[]);
+int getMaxElem(int a[], int length);
 int main()
 {
-    int length[MAX] = {0};
-    int c, i, j, k, l;
-    int gmax[2] = {0};
-    j = 0;
+    int length[MAX] = {0};    // words' length
+    int c, i, j;
+    int words_length, words_count, max_words_length;
+    int print_matrix[MAX][MAX] = {0};
     char symbol = '|';
+    char *input_word;    
+    char *input_word_list[MAX];
 
+    words_count = 0;
+
+    /* store input words and get words count and get every word's length */
     while ((c = getchar()) != EOF) {
-        putchar(c);
+        words_length = 0;
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-            i = 1;
+            input_word = (char *)malloc(MAXLENGTH);
+            *(input_word + words_length) = c;
+            words_length++;
             while (((c = getchar()) >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-                ++i;
+                words_length++;
+                *(input_word + words_length) = c;
             }
-            length[j++] = i;
         }
+        *(input_word_list + words_count) = input_word;
+        length[words_count++] = words_length;
     }
-    putchar('\n');
 
-    if (getmax(length, &gmax)) {
-        printf("get max failed!\n");
-        return -1;
-    }
-    k = gmax[1];
-    l = j - k;
-    while (gmax[0]-- > 0) {
-        while (k-- >= 0)
-            printf("\t");
-        printf("%c", symbol);
-        while (l-- > 0)
-            printf("\t");
+    /* TODO: print histogram */
+    //words_count--;
+    max_words_length = getMaxElem(length, words_count);
+    for (i = 0; i < words_count; i++)
+        for (j = 0; j < max_words_length; j++)
+            if (j < length[i])
+                print_matrix[i][j] = 1;
+            else 
+                print_matrix[i][j] = 0;
+
+    for (i = 0; i < words_count; i++) {
+        printf("%s\t\t", *(input_word_list + i));
+        for (j = 0; j < max_words_length; j++)
+            if (print_matrix[i][j] == 1)
+                printf("%c  ", symbol);
+            //printf("%d  ", print_matrix[i][j]);
         printf("\n");
     }
 
+    /* free */
+    for (i = 0; i <= words_count; i++)
+        free(*(input_word_list + i));
+
+    putchar('\n');
     return 0;
 }
 
-int getmax(int length[], int *gmax[])
+/* getMaxElem: find max element in array a */
+int getMaxElem(int a[], int length)
 {
-    /* statements of verify whether the array length is legal  */
-    int i = 0;
+    int temp, i;
 
-    while (length[i] != 0) {
-        if (*gmax[0] <= length[i]) {
-            *gmax[0] = length[i];
-            *gmax[1] = i;
-        }
-        ++i;
-    }
+    temp = a[0];
 
-    return 0;
+    for (i = 1; i < length; i++)
+        if (temp < a[i])
+            temp = a[i];
+
+    return temp;
 }
+
+/* TODO: transposeMatrix: Transpose of a matrix */

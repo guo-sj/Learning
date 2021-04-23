@@ -25,5 +25,10 @@ int testfloat();
 int testdouble();
 int testTypeCast();
 int testStringConstant();
+void myStrcpy1(char *dest, char *sour);
+void myStrcpy2(char *dest, char *sour);
+void myStrcpy3(char *dest, char *sour);
+int myStrcmpA(char *s, char *t);
+int myStrcmpP(char *s, char *t);
 
 #endif

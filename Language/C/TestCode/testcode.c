@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "testcode.h"
 #include "testextern.h"
 
@@ -41,6 +42,45 @@ int main()
                 testStringConstant();
                 break;
 
+            case 8:
+                {
+                    char dest1[50] = "";                   // for myStrcpy1
+                    char sour1[50] = "Now it is time!";    // for myStrcpy1
+                    char dest2[50] = "";                   // for myStrcpy2
+                    char sour2[50] = "Now it is time!";    // for myStrcpy2
+                    char dest3[50] = "";                   // for myStrcpy3
+                    char sour3[50] = "Now it is time!";    // for myStrcpy3
+
+                    printf("myStrcpy1:\n");
+                    myStrcpy1(dest1, sour1);
+                    printf("source string: %s\n", sour1);
+                    printf("After copy... ...\n");
+                    printf("destination string: %s\n\n\n", dest1);
+
+                    printf("myStrcpy2:\n");
+                    myStrcpy2(dest2, sour2);
+                    printf("source string: %s\n", sour2);
+                    printf("After copy... ...\n");
+                    printf("destination string: %s\n\n\n", dest2);
+
+                    printf("myStrcpy3:\n");
+                    myStrcpy3(dest3, sour3);
+                    printf("source string: %s\n", sour3);
+                    printf("After copy... ...\n");
+                    printf("destination string: %s\n", dest3);
+                }
+                break;
+
+            case 9:
+                {
+                    char s[50] = "Happy";
+                    char t[50] = "Birthday";
+
+                    printf("myStrcmpA:    %d\n", myStrcmpA(s, t));
+                    printf("myStrcmpP:    %d\n", myStrcmpP(s, t));
+                }
+                break;
+
             default:
                 break;
         }
@@ -58,6 +98,8 @@ void printinfo(int funcname)
             printf("      5, testdouble\n");
             printf("      6, testTypeCast\n");
             printf("      7, testStringConstant\n");
+            printf("      8, myStrcpy1, myStrcpy2, myStrcpy3\n");
+            printf("      9, myStrcmpA, myStrcmpP\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -205,4 +247,45 @@ int testStringConstant()
     printf("%s", pmessage);
 
     return OK;
+}
+/* myStrcpy1: my implement of standard lib function strcpy, version 1 */
+void myStrcpy1(char *dest, char *sour)
+{
+    while ((*dest = *sour) != '\0') {
+        dest++;
+        sour++;
+    }
+}
+/* myStrcpy2: my implement of standard lib function strcpy, version 2 */
+void myStrcpy2(char *dest, char *sour)
+{
+    while ((*dest++ = *sour++) != '\0')
+        ;
+}
+/* myStrcpy3: my implement of standard lib function strcpy, version 3 */
+void myStrcpy3(char *dest, char *sour)
+{
+    while (*dest++ = *sour++)
+        ;
+}
+/* myStrcmpA: my implement of standard lib function strcmp, array version */
+int myStrcmpA(char *s, char *t)
+{
+    int i;
+
+    for (i = 0; s[i] == t[i]; i++)
+        if (s[i] == '\0')
+            return 0;
+
+    return s[i] - t[i];
+}
+/* myStrcmpP: my implement of standard lib function strcmp, pointer version */
+int myStrcmpP(char *s, char *t)
+{
+    //while (*s++ == *t++)
+    for (; *s == *t; s++, t++)
+        if (*s == '\0')
+            return 0;
+
+    return *s - *t;
 }

@@ -81,6 +81,10 @@ int main()
                 }
                 break;
 
+            case 10:
+                printPricision();
+                break;
+
             default:
                 break;
         }
@@ -100,6 +104,7 @@ void printinfo(int funcname)
             printf("      7, testStringConstant\n");
             printf("      8, myStrcpy1, myStrcpy2, myStrcpy3\n");
             printf("      9, myStrcmpA, myStrcmpP\n");
+            printf("      10, printPricision\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -288,4 +293,18 @@ int myStrcmpP(char *s, char *t)
             return 0;
 
     return *s - *t;
+}
+/* printPricision: test pricision of 'printf' */
+void printPricision()
+{
+    int i;
+    float f;
+    char *s = "Hello, World";
+    
+    i = 777;
+    f = 555.555;
+
+    printf("%10.4d\n", i);
+    printf("%10.2f\n", f);
+    printf("%10.10s\n", s);
 }

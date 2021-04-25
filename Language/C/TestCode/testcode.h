@@ -30,5 +30,6 @@ void myStrcpy2(char *dest, char *sour);
 void myStrcpy3(char *dest, char *sour);
 int myStrcmpA(char *s, char *t);
 int myStrcmpP(char *s, char *t);
+void printPricision();
 
 #endif

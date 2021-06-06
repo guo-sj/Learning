@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 #include "testcode.h"
 #include "testextern.h"
@@ -85,6 +86,18 @@ int main()
                 printPricision();
                 break;
 
+            case 11:
+                testConstant();
+                break;
+
+            case 12:
+                testBell();
+                break;
+
+            case 13:
+                testEnum();
+                break;
+
             default:
                 break;
         }
@@ -105,6 +118,9 @@ void printinfo(int funcname)
             printf("      8, myStrcpy1, myStrcpy2, myStrcpy3\n");
             printf("      9, myStrcmpA, myStrcmpP\n");
             printf("      10, printPricision\n");
+            printf("      11, test constant\n");
+            printf("      12, test bell\n");
+            printf("      13, test enum\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -300,11 +316,46 @@ void printPricision()
     int i;
     float f;
     char *s = "Hello, World";
-    
+
     i = 777;
     f = 555.555;
 
     printf("%10.4d\n", i);
     printf("%10.2f\n", f);
     printf("%10.10s\n", s);
+}
+/* test constant */
+void testConstant()
+{
+    printf("%-13s%-13s%-13s%-13s%-13s\n", NUMBER, DECIMAL, OCTAL, HEXADECIMAL, CHARACTER);
+    printf("%-13d%-13d0%-12o0x%-11x8%-13c\n", INTEGERDECIMAL, INTEGERDECIMAL, INTEGERDECIMAL, INTEGERDECIMAL, INTEGERDECIMAL);
+    printf("0%-12o%-13d0%-12o0x%-11x%-13c\n", INTEGEROCTAL, INTEGEROCTAL, INTEGEROCTAL, INTEGEROCTAL, INTEGEROCTAL);
+    printf("0x%-11x%-13d0%-12o0x%-11x%-13c\n", INTEGERHEX, INTEGERHEX, INTEGERHEX, INTEGERHEX, INTEGERHEX);
+}
+/* test bell('\a')*/
+void testBell()
+{
+    int i;
+
+    for (i = 0; i < 5; i++)
+        if (i%2)
+            printf("%c", BELL);
+        else
+            printf("no bell\n");
+}
+/* bell */
+void bell()
+{
+    printf("%c", BELL);
+}
+
+/* test enum */
+void testEnum()
+{
+    printf("%-13s%-13s\n", "MONTH", "VALUE");
+    printf("%-13s%-13d\n", "JAN", JAN);
+    printf("%-13s%-13d\n", "FEB", FEB);
+    printf("%-13s%-13d\n", "MAR", MAR);
+    printf("%-13s%-13d\n", "APR", APR);
+    printf("%-13s%-13d\n", "MAY", MAY);
 }

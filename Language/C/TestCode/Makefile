@@ -4,7 +4,7 @@ sources = testcode.c testextern.c
 objects = $(sources:.c=.o)
 
 test : $(objects)
-	cc -o $@ $^
+	cc -g -o $@ $^
 
 %.o : %c
 	cc -g -c -o $@ $<

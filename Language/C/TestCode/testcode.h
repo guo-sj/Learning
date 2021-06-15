@@ -51,5 +51,7 @@ void testConstant();
 void testBell();
 void bell();
 void testEnum();
+void testConst();
+void testConversion();
 
 #endif

@@ -98,6 +98,14 @@ int main()
                 testEnum();
                 break;
 
+            case 14:
+                testEnum();
+                break;
+
+            case 15:
+                testConversion();
+                break;
+
             default:
                 break;
         }
@@ -121,6 +129,8 @@ void printinfo(int funcname)
             printf("      11, test constant\n");
             printf("      12, test bell\n");
             printf("      13, test enum\n");
+            printf("      14, test const\n");
+            printf("      15, test conversion\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -358,4 +368,29 @@ void testEnum()
     printf("%-13s%-13d\n", "MAR", MAR);
     printf("%-13s%-13d\n", "APR", APR);
     printf("%-13s%-13d\n", "MAY", MAY);
+}
+
+/* test const variable */
+void testConst()
+{
+    //const int c = 77;
+    int c = 77;
+
+    c = c - 7;
+    printf("77 - 7 = %d\n", c);
+}
+
+/* test type conversion */
+void testConversion()
+{
+    long int i;
+    unsigned int ui;
+    unsigned long int uli;
+
+    i = -1;
+    ui = 1;
+    uli = 1;
+    
+    printf("-1L < 1 is %s\n", i < ui ? "True" : "False");
+    printf("-1L > 1UL is %s\n", i > uli ? "True" : "False");
 }

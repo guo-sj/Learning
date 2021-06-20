@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <string.h>
 #include "testcode.h"
 #include "testextern.h"
@@ -106,11 +107,16 @@ int main()
                 testConversion();
                 break;
 
+            case 16:
+                testRandom();
+                break;
+
             default:
                 break;
         }
     }
 }
+
 void printinfo(int funcname)
 {
     switch (funcname) {
@@ -131,6 +137,7 @@ void printinfo(int funcname)
             printf("      13, test enum\n");
             printf("      14, test const\n");
             printf("      15, test conversion\n");
+            printf("      16, test pseudo-random number generator\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -393,4 +400,17 @@ void testConversion()
     
     printf("-1L < 1 is %s\n", i < ui ? "True" : "False");
     printf("-1L > 1UL is %s\n", i > uli ? "True" : "False");
+}
+
+/* test pseudo-random number generator */
+void testRandom()
+{
+    int i;
+
+    for (i = 0; i < 10; ++i) {
+        printf("%-7d\n", rand());
+        if (!((i+1)%5))
+            printf("\n");
+    }
+
 }

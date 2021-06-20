@@ -53,5 +53,6 @@ void bell();
 void testEnum();
 void testConst();
 void testConversion();
+void testRandom();
 
 #endif

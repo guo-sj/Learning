@@ -54,5 +54,8 @@ void testEnum();
 void testConst();
 void testConversion();
 void testRandom();
+void testIncrementAndDecrementOperator();
+void squeeze(char s[], int c);
+int mygetline(char s[], int len);
 
 #endif

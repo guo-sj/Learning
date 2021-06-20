@@ -111,6 +111,27 @@ int main()
                 testRandom();
                 break;
 
+            case 17:
+                testIncrementAndDecrementOperator();
+                break;
+
+            case 18:    // TODO: get bug when type EOF
+                {
+                    char s[MAXLEN];
+                    int c;
+
+                    getchar();    // filter '\n'
+                    while (mygetline(s, MAXLEN) > 0) {
+                        printf("input c: ");
+                        c = getchar();
+                        getchar();    // filter '\n'
+                        squeeze(s, c);
+                        printf("%s", s);
+                    }
+
+                    getchar();
+                    break;
+                }
             default:
                 break;
         }
@@ -138,6 +159,8 @@ void printinfo(int funcname)
             printf("      14, test const\n");
             printf("      15, test conversion\n");
             printf("      16, test pseudo-random number generator\n");
+            printf("      17, test Increment and decrement operator\n");
+            printf("      18, squeeze\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -158,12 +181,14 @@ void printinfo(int funcname)
             break;
     }
 }
+
 int testextern()
 {
     dprint(te, d);
 
     return OK;
 }
+
 int testarrayaddr()
 {
     char c[MAXLEN] = {0};
@@ -177,6 +202,7 @@ int testarrayaddr()
 
     return OK;
 }
+
 int testsprintf()
 {
     int user;
@@ -193,6 +219,7 @@ int testsprintf()
 
     return OK;
 }
+
 int testfloat()
 {
     int choose;
@@ -249,6 +276,7 @@ int testfloat()
     }
     return OK;
 }
+
 /* test double size */
 int testdouble()
 {
@@ -262,6 +290,7 @@ int testdouble()
 
     return OK;
 }
+
 /* unsigned int -> int */
 int testTypeCast()
 {
@@ -275,6 +304,7 @@ int testTypeCast()
 
     return OK;
 }
+
 /* test string constant */
 int testStringConstant()
 {
@@ -286,6 +316,7 @@ int testStringConstant()
 
     return OK;
 }
+
 /* myStrcpy1: my implement of standard lib function strcpy, version 1 */
 void myStrcpy1(char *dest, char *sour)
 {
@@ -294,18 +325,21 @@ void myStrcpy1(char *dest, char *sour)
         sour++;
     }
 }
+
 /* myStrcpy2: my implement of standard lib function strcpy, version 2 */
 void myStrcpy2(char *dest, char *sour)
 {
     while ((*dest++ = *sour++) != '\0')
         ;
 }
+
 /* myStrcpy3: my implement of standard lib function strcpy, version 3 */
 void myStrcpy3(char *dest, char *sour)
 {
     while (*dest++ = *sour++)
         ;
 }
+
 /* myStrcmpA: my implement of standard lib function strcmp, array version */
 int myStrcmpA(char *s, char *t)
 {
@@ -317,6 +351,7 @@ int myStrcmpA(char *s, char *t)
 
     return s[i] - t[i];
 }
+
 /* myStrcmpP: my implement of standard lib function strcmp, pointer version */
 int myStrcmpP(char *s, char *t)
 {
@@ -327,6 +362,7 @@ int myStrcmpP(char *s, char *t)
 
     return *s - *t;
 }
+
 /* printPricision: test pricision of 'printf' */
 void printPricision()
 {
@@ -341,6 +377,7 @@ void printPricision()
     printf("%10.2f\n", f);
     printf("%10.10s\n", s);
 }
+
 /* test constant */
 void testConstant()
 {
@@ -349,6 +386,7 @@ void testConstant()
     printf("0%-12o%-13d0%-12o0x%-11x%-13c\n", INTEGEROCTAL, INTEGEROCTAL, INTEGEROCTAL, INTEGEROCTAL, INTEGEROCTAL);
     printf("0x%-11x%-13d0%-12o0x%-11x%-13c\n", INTEGERHEX, INTEGERHEX, INTEGERHEX, INTEGERHEX, INTEGERHEX);
 }
+
 /* test bell('\a')*/
 void testBell()
 {
@@ -360,6 +398,7 @@ void testBell()
         else
             printf("no bell\n");
 }
+
 /* bell */
 void bell()
 {
@@ -413,4 +452,38 @@ void testRandom()
             printf("\n");
     }
 
+}
+
+/* test increment and decrement operator */
+void testIncrementAndDecrementOperator()
+{
+    int n;
+
+    scanf("%d", &n);
+    printf("n++:%3d    --n:%3d    ++n:%3d\n", n++, --n, ++n);
+}
+
+/* squeeze:  delete all c from s */
+void squeeze(char s[], int c)
+{
+    int i, j;
+
+    for (i = j = 0; s[i] != '\0'; i++)
+        if (s[i] != c)
+            s[j++] = s[i];
+    s[j] = '\0';
+}
+
+/* mygetline: get a line from standard input */
+int mygetline(char s[], int len)
+{
+    int c, i;
+
+    for (i=0; i<len-1 && (c=getchar())!=EOF && c!='\n'; i++)
+        s[i] = c;
+    if (c == '\n')
+        s[i++] = c;
+    s[i] = '\0';
+
+    return i;
 }

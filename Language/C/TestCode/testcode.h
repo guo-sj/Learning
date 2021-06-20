@@ -57,5 +57,6 @@ void testRandom();
 void testIncrementAndDecrementOperator();
 void squeeze(char s[], int c);
 int mygetline(char s[], int len);
+void myStrcat(char s[], char t[]);
 
 #endif

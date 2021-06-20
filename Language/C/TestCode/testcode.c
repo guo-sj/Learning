@@ -130,8 +130,20 @@ int main()
                     }
 
                     getchar();
-                    break;
                 }
+                break;
+
+            case 19:
+                {
+                    char s[MAXLEN], t[MAXLEN];
+
+                    getchar();    /* filter '\n' */
+                    if (mygetline(s, MAXLEN) > 0 && mygetline(t, MAXLEN) > 0)
+                        myStrcat(s, t);
+                    printf("%s", s);
+                }
+                break;
+
             default:
                 break;
         }
@@ -161,6 +173,7 @@ void printinfo(int funcname)
             printf("      16, test pseudo-random number generator\n");
             printf("      17, test Increment and decrement operator\n");
             printf("      18, squeeze\n");
+            printf("      19, test myStrcat\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -486,4 +499,16 @@ int mygetline(char s[], int len)
     s[i] = '\0';
 
     return i;
+}
+
+/* myStrcat: concatenate t to end of s; s must be big enough */
+void myStrcat(char s[], char t[])
+{
+    int i, j;
+
+    i = j = 0;
+    while (s[i] != '\0')
+        i++;
+    while ((s[i++] = t[j++]))
+        ;
 }

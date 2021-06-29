@@ -144,6 +144,21 @@ int main()
                 }
                 break;
 
+            case 20:
+                testBitwiseOperators();
+                break;
+
+            case 21:
+                {
+                    unsigned x;
+                    int p, n;
+
+                    printf("Please input :x p n\n");
+                    scanf("%x%d%d", &x, &p, &n);
+                    printf("(x >> (p+1-n)) & ~(~0 << n) = 0x%x", getbits(x, p, n));
+                }
+                break;
+
             default:
                 break;
         }
@@ -174,6 +189,8 @@ void printinfo(int funcname)
             printf("      17, test Increment and decrement operator\n");
             printf("      18, squeeze\n");
             printf("      19, test myStrcat\n");
+            printf("      20, test bitwise operators\n");
+            printf("      21, test getbits\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -511,4 +528,19 @@ void myStrcat(char s[], char t[])
         i++;
     while ((s[i++] = t[j++]))
         ;
+}
+
+/* test bitwise operators */
+void testBitwiseOperators()
+{
+    int x;
+
+    x = 0x62;
+    printf("x = 0x62, x & ~03 = 0x%x\n", x & ~003);
+}
+
+/* getbits:  get n bits from position p */
+unsigned getbits(unsigned x, int p, int n)
+{
+    return (x >> (p+1-n) & ~(~0 << n));
 }

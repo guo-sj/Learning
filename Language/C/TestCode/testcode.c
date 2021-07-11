@@ -159,6 +159,28 @@ int main()
                 }
                 break;
 
+            case 22:
+                {
+                    unsigned n, i;
+                    int a[MAXLEN];
+                    int c;
+
+                    printf("Input n: ");
+                    scanf("%d", &n);
+
+                    printf("Input a: ");
+                    for (i = 0; i < n; ++i)
+                        scanf("%d", &a[i]);
+
+                    formatPrint_1(a, n);
+                }
+                break;
+                
+            case 23:
+                formatPrint_2(10);
+                formatPrint_2(1);
+                break;
+
             default:
                 break;
         }
@@ -191,6 +213,8 @@ void printinfo(int funcname)
             printf("      19, test myStrcat\n");
             printf("      20, test bitwise operators\n");
             printf("      21, test getbits\n");
+            printf("      22, formatPrint_1\n");
+            printf("      23, formatPrint_2\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -543,4 +567,22 @@ void testBitwiseOperators()
 unsigned getbits(unsigned x, int p, int n)
 {
     return (x >> (p+1-n) & ~(~0 << n));
+}
+
+/* formatPrint_1: print n elements of an array, 
+ * 10 per line, with each column separated by
+ * one blank, and with each line (including 
+ * the last) terminated by a newline */
+void formatPrint_1(int a[], unsigned n)
+{
+    int i;
+
+    for (i = 0; i < n; ++i)
+        printf("%6d%c", a[i], (i%10==9 || i==n-1) ? '\n' : ' ');
+}
+
+/* formatPrint_2: print format output */
+void formatPrint_2(unsigned n)
+{
+    printf("You have %d item%s\n", n, (n == 1) ? "" : "s");
 }

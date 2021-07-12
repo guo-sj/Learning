@@ -62,5 +62,6 @@ void testBitwiseOperators();
 unsigned getbits(unsigned x, int p, int n);
 void formatPrint_1(int a[], unsigned n);
 void formatPrint_2(unsigned n);
+void precedence();
 
 #endif

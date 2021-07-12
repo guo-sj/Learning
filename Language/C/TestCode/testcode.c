@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "testcode.h"
 #include "testextern.h"
 
@@ -181,6 +182,10 @@ int main()
                 formatPrint_2(1);
                 break;
 
+            case 24:
+                precedence();
+                break;
+
             default:
                 break;
         }
@@ -215,6 +220,7 @@ void printinfo(int funcname)
             printf("      21, test getbits\n");
             printf("      22, formatPrint_1\n");
             printf("      23, formatPrint_2\n");
+            printf("      24, precedence\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -585,4 +591,23 @@ void formatPrint_1(int a[], unsigned n)
 void formatPrint_2(unsigned n)
 {
     printf("You have %d item%s\n", n, (n == 1) ? "" : "s");
+}
+
+/* precedence: test the precedence of c */
+void precedence()
+{
+    int n, x, i;
+    int a[5] = {1, 2, 3, 4, 5};
+
+    n = 3;
+
+    x = n++ + --n;    /* x = 3 + 3 */
+
+    printf("x: %d\n", x);
+    printf("%d %d\n", ++n, (int)n*n);    /* n*n evaluated first, ++n last */
+
+    for (i = 0; i < 5; ++i) {
+        a[i] = i++;
+        printf("%d  %d\n", a[i], i);
+    
 }

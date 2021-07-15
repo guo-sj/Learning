@@ -13,4 +13,4 @@ testextern.o : testextern.c
 	cc -g -c testextern.c
 
 clean:
-	rm -f test $(objects)
+	rm -f test $(objects) *~ .*~

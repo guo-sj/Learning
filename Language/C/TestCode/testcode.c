@@ -176,7 +176,7 @@ int main()
                     formatPrint_1(a, n);
                 }
                 break;
-                
+
             case 23:
                 formatPrint_2(10);
                 formatPrint_2(1);
@@ -184,6 +184,10 @@ int main()
 
             case 24:
                 precedence();
+                break;
+
+            case 25:
+                testIf();
                 break;
 
             default:
@@ -221,6 +225,7 @@ void printinfo(int funcname)
             printf("      22, formatPrint_1\n");
             printf("      23, formatPrint_2\n");
             printf("      24, precedence\n");
+            printf("      25, testIf\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -496,7 +501,7 @@ void testConversion()
     i = -1;
     ui = 1;
     uli = 1;
-    
+
     printf("-1L < 1 is %s\n", i < ui ? "True" : "False");
     printf("-1L > 1UL is %s\n", i > uli ? "True" : "False");
 }
@@ -609,5 +614,31 @@ void precedence()
     for (i = 0; i < 5; ++i) {
         a[i] = i++;
         printf("%d  %d\n", a[i], i);
-    
+    }
+
+}
+
+/* testIf:  test if-else */
+void testIf()
+{
+    int i, n;
+    int s[] = {1, -1, 3, 8, 9};
+
+    printf("Input n(1~5): ");
+    scanf("%d", &n);
+
+    /* Because the 'else' part of an 'if-else' is optional,
+     * there is an ambiguity when an 'else' is omitted from
+     * a nested 'if' sequence. This is resolved by associating
+     * the 'else' with the closest previous else-less 'if'.
+     * This kind of bug can be hard to find; it's a good idea
+     * to use braces when there are nested 'if's */
+    if (n >= 1 && n <= 5)
+        for (i = 0; i < n; ++i) {
+            if (s[i] >= 0)
+                printf("%3d%c", s[i],\
+                        (i%3==2 || i==n-1) ? '\n' : ' ');
+        }
+    else
+        printf("Error -- n is negative\n");
 }

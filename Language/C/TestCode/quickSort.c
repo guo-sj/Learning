@@ -1,8 +1,7 @@
 #include "quickSort.h"
 
 /* TODO:
- *   1  loop version partition 
- *   2  decreased version quick sort */
+ *   1  loop version partition */
 
 /* quickSortCall:  call all functions about quick sort */
 void quickSortCall()
@@ -97,13 +96,14 @@ void quickSort(int a[], int len, int left, int right)
         return ;
 
     pivot = a[right];
-    patitionPoint = partition(a, len, left, right, pivot);
+    //patitionPoint = partition(a, len, left, right, pivot);
+    patitionPoint = decreasePartition(a, len, left, right, pivot);
     quickSort(a, len, left, patitionPoint-1);
     quickSort(a, len, patitionPoint+1, right);
 
 }
 
-/* partition:  finish once partition in quick sort */
+/* partition:  finish once partition in quick sort, increasing version */
 int partition(int a[], int len, int left, int right, int povit)
 {
     int leftPointer, rightPointer;
@@ -132,4 +132,30 @@ int partition(int a[], int len, int left, int right, int povit)
     return leftPointer;    /* return povit's subscript */
 }
 
+/* decreasePartition: finish once partition in quick sort, decrease version */
+int decreasePartition(int a[], int len, int left, int right, int povit)
+{
+    int leftPointer, rightPointer;
 
+    leftPointer = left - 1;
+    rightPointer = right;
+    while (true) {
+        while (a[++leftPointer] > povit)
+            ;
+        while (rightPointer>0 && a[--rightPointer]<povit)
+            ;
+
+        if (leftPointer >= rightPointer)
+            break;
+        else {
+            printf("item swapped: %d, %d\n", a[leftPointer], a[rightPointer]);
+            swap(a, leftPointer, rightPointer);
+        }
+    }
+
+    printf("povit swapped: %d, %d\n", a[leftPointer], a[right]);
+    swap(a, leftPointer, right);
+    displayArray(a, len);
+
+    return leftPointer;
+}

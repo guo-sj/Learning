@@ -1,5 +1,9 @@
 #include "quickSort.h"
 
+/* TODO:
+ *   1  loop version partition 
+ *   2  decreased version quick sort */
+
 /* quickSortCall:  call all functions about quick sort */
 void quickSortCall()
 {

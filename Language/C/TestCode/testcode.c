@@ -5,6 +5,7 @@
 #include <math.h>
 #include "testcode.h"
 #include "testextern.h"
+#include "quickSort.h"
 
 int main()
 {
@@ -194,6 +195,10 @@ int main()
                 binSearchCall();
                 break;
 
+            case 27:
+                quickSortCall();
+                break;
+
             default:
                 break;
         }
@@ -231,6 +236,7 @@ void printinfo(int funcname)
             printf("      24, precedence\n");
             printf("      25, testIf\n");
             printf("      26, binSearchCall\n");
+            printf("      27, quickSortCall\n");
             printf("      0, quit\n");
             printf("Input:");
             break;

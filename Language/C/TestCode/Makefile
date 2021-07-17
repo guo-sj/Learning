@@ -1,5 +1,5 @@
 
-sources = testcode.c testextern.c
+sources = testcode.c testextern.c quickSort.c
 
 objects = $(sources:.c=.o)
 
@@ -11,6 +11,9 @@ testcode.o : testcode.c
 
 testextern.o : testextern.c
 	cc -g -c testextern.c
+
+quickSort.o : quickSort.c
+	cc -g -c quickSort.c
 
 clean:
 	rm -f test $(objects) *~ .*~

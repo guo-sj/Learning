@@ -64,5 +64,7 @@ void formatPrint_1(int a[], unsigned n);
 void formatPrint_2(unsigned n);
 void precedence();
 void testIf();
+int binsearch(int x, int v[], int n);
+void binSearchCall();
 
 #endif

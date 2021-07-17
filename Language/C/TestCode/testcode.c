@@ -190,6 +190,10 @@ int main()
                 testIf();
                 break;
 
+            case 26:
+                binSearchCall();
+                break;
+
             default:
                 break;
         }
@@ -226,6 +230,7 @@ void printinfo(int funcname)
             printf("      23, formatPrint_2\n");
             printf("      24, precedence\n");
             printf("      25, testIf\n");
+            printf("      26, binSearchCall\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -642,3 +647,46 @@ void testIf()
     else
         printf("Error -- n is negative\n");
 }
+
+/* binSearchCall:  call binsearch() */
+void binSearchCall()
+{
+    int a[] = {-3, 6, 9, 100, 9999, 88899};
+    int x;
+
+    printf("Input x: ");
+    scanf("%d", &x);
+    printf("Find result: %d\n", binsearch(x, a, 6));
+}
+
+/* binsearch:  find x in v[0] <= v[1] <= ... <= v[n-1] */
+int binsearch(int x, int v[], int n)
+{
+    int low, high, mid;
+
+    low = 0;
+    high = n-1;
+    while (low <= high) {
+        mid = (low+high) / 2;
+        if (x < v[mid])
+            high = mid - 1;
+        else if (x > v[mid])
+            low = mid + 1;
+        else
+            return mid;    /* found match */
+    }
+
+    return -1;    /* no match */
+}
+
+/* quickSortCall: quick sort call */
+/*void quickSortCall()
+{
+    printf("Input Array: ");
+    display();
+    printline(50);
+    quickSort(0, 20);
+    printf("Output Array: ");
+    display();
+    printline(50);
+}*/

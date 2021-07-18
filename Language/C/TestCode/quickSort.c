@@ -7,6 +7,7 @@
 void quickSortCall()
 {
     int *a, len;
+    int increasing;
 
     printf("Input array's len: ");
     scanf("%d", &len);
@@ -20,7 +21,14 @@ void quickSortCall()
     displayArray(a, len);
     printLine(50);
 
-    quickSort(a, len, 0, len-1);    /* quick sort */
+    printf("  0 Decreasing   1 Increasing\n");
+    printf("  Input: ");
+    scanf("%d", &increasing);
+    if (increasing)
+        increasing = true;
+    else 
+        increasing = false;
+    quickSort(a, len, 0, len-1, increasing);    /* quick sort */
 
     printLine(50);
     printf("After sorting: ");
@@ -87,35 +95,38 @@ void swap(int a[], int s1, int s2)
 }
 
 /* quickSort:  the practice of algorithms of quick sort */
-void quickSort(int a[], int len, int left, int right)
+void quickSort(int a[], int len, int left, int right, bool increasing)
 {
     int pivot;
-    int patitionPoint;
+    int partitionPoint;
 
     if (left >= right)
         return ;
 
     pivot = a[right];
-    //patitionPoint = partition(a, len, left, right, pivot);
-    patitionPoint = decreasePartition(a, len, left, right, pivot);
-    quickSort(a, len, left, patitionPoint-1);
-    quickSort(a, len, patitionPoint+1, right);
+    if (increasing)
+        partitionPoint = increasePartition(a, len, left, right, pivot);
+    else
+        partitionPoint = decreasePartition(a, len, left, right, pivot);
+
+    quickSort(a, len, left, partitionPoint-1, increasing);
+    quickSort(a, len, partitionPoint+1, right, increasing);
 
 }
 
 /* partition:  finish once partition in quick sort, increasing version */
-int partition(int a[], int len, int left, int right, int povit)
+int increasePartition(int a[], int len, int left, int right, int povit)
 {
     int leftPointer, rightPointer;
 
-    leftPointer = left - 1;
-    rightPointer = right;
+    leftPointer = left;
+    rightPointer = right - 1;    /* exclude povit(a[right]) */
 
     while (true) {
-        while (a[++leftPointer] < povit)
-            ;
-        while (rightPointer>0 && a[--rightPointer]>povit)
-            ;
+        while (a[leftPointer] < povit)
+            ++leftPointer;
+        while (rightPointer>0 && a[rightPointer]>povit)
+            --rightPointer;
 
         if (leftPointer >= rightPointer)
             break;
@@ -137,13 +148,13 @@ int decreasePartition(int a[], int len, int left, int right, int povit)
 {
     int leftPointer, rightPointer;
 
-    leftPointer = left - 1;
-    rightPointer = right;
+    leftPointer = left;
+    rightPointer = right - 1;    /* exclude povit(a[right]) */
     while (true) {
-        while (a[++leftPointer] > povit)
-            ;
-        while (rightPointer>0 && a[--rightPointer]<povit)
-            ;
+        while (a[leftPointer] > povit)
+            ++leftPointer;
+        while (rightPointer>0 && a[rightPointer]<povit)
+            --rightPointer;
 
         if (leftPointer >= rightPointer)
             break;

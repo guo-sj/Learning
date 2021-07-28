@@ -24,7 +24,9 @@ int main()
                 break;
 
             case CLASS:
-                myClass::callRectangleFunction();
+                //myClass::callRectangleFunction();
+                //myClass::callCircleFunction();
+                myClass::callCylinderFunction();
                 break;
 
             case QUIT:

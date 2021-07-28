@@ -23,6 +23,10 @@ int main()
                 structures::structuresCall();
                 break;
 
+            case CLASS:
+                myClass::callRectangleFunction();
+                break;
+
             case QUIT:
                 std::cout << "Get 0, Quit!\n";
                 break;
@@ -43,6 +47,7 @@ void printMenu()
     std::cout << "  1 ARRAYS\n";
     std::cout << "  2 POINTERS\n";
     std::cout << "  3 STRUCTURES\n";
+    std::cout << "  4 CLASS\n";
     std::cout << "  0 QUIT\n";
     std::cout << "  Input: ";
 }

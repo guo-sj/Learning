@@ -1,6 +1,6 @@
 #include "ch3.h"
 
-/* This file contains code in chapter 3 of  <The C Programming Language>.*/
+/* This file contains code in chapter 3 of <The C Programming Language> */
 
 /* ch3Call:  call all ch3 functions */
 void ch3Call()
@@ -15,6 +15,10 @@ void ch3Call()
             case COUNTDWO:
                 countdwo();
                 getchar();    /* filter */
+                break;
+
+            case MYATOI:
+                myatoiCall();
                 break;
 
             case QUIT:
@@ -32,7 +36,9 @@ void ch3Call()
 void ch3PrintMenu()
 {
     printf("\n");
+    printf("  ch3:\n");
     printf("  1 COUNTDWO\n");
+    printf("  2 MYATOI\n");
     printf("  0 QUIT\n");
     printf("  Input: ");
 }
@@ -70,4 +76,31 @@ void countdwo()
     printf(", nwhite = %d, nother = %d\n", nwhite, nother);
 }
 
+/* myatoi:  convert s to integer; version 2 */
+int myatoi(char *s)
+{
+    int i, n, sign;
+
+    for (i = 0; isspace(s[i]); ++i)    /* skip white space */
+        ;
+    sign = (s[i] == '-') ? -1 : 1;
+    if (s[i] == '+' || s[i] == '-')    /* skip sign */
+        ++i;
+    for (n = 0; isdigit(s[i]); ++i)
+        n = 10 * n + (s[i] - '0');
+    return sign * n;
+}
+
+/* myatoiCall:  call myatoi() */
+void myatoiCall()
+{
+    char *s1 = "123";
+    char *s2 = "-123";
+    char *s3 = "  123";
+
+    printf("%-10s%-10s\n", "string", "number");
+    printf("%-10s%-10d\n", s1, myatoi(s1));
+    printf("%-10s%-10d\n", s2, myatoi(s2));
+    printf("%-10s%-10d\n", s3, myatoi(s3));
+}
 

@@ -21,6 +21,10 @@ void ch3Call()
                 myatoiCall();
                 break;
 
+            case SHELLSORT:
+                shellsortCall();
+                break;
+
             case QUIT:
                 printf("Get 0, quit!\n");
                 break;
@@ -39,6 +43,7 @@ void ch3PrintMenu()
     printf("  ch3:\n");
     printf("  1 COUNTDWO\n");
     printf("  2 MYATOI\n");
+    printf("  3 SHELLSORT\n");
     printf("  0 QUIT\n");
     printf("  Input: ");
 }
@@ -104,3 +109,45 @@ void myatoiCall()
     printf("%-10s%-10d\n", s3, myatoi(s3));
 }
 
+/* shellsortCall: call shellsort() */
+void shellsortCall()
+{
+    int a[8] = {35, 33, 42, 10, 14, 19, 27, 44};
+
+    printf("Before Sort:\n");
+    print_array(a, 8);
+    shellsort(a, 8);
+    printf("After Sort:\n");
+    print_array(a, 8);
+}
+
+/* shellsort:  sort v[0] ... v[n-1] into increasing order */
+void shellsort(int v[], int n)
+{
+    int gap, i, j, temp;
+    int dcount;    /* debug count */
+
+    dcount = 0;
+    for (gap = n/2; gap > 0; gap /= 2)
+        for (i = gap; i < n; ++i)
+            for (j = i-gap; j>=0 && v[j]>v[j+gap]; j-=gap) {
+                printf("%d <-> %d\n", v[j], v[j+gap]);  /* debug info */
+                temp = v[j];
+                v[j] = v[j+gap];
+                v[j+gap] = temp;
+
+                /* debug info */
+                printf("No.%d: ", ++dcount);  
+                print_array(v, n);
+            }
+}
+
+/* print_array: print a[0] ... a[n-1] */
+void print_array(int a[], int n)
+{
+    int i;
+
+    for (i = 0; i < n; ++i)
+        printf("%3d", a[i]);
+    printf("\n");
+}

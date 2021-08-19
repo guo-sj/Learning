@@ -25,6 +25,10 @@ void ch3Call()
                 shellsortCall();
                 break;
 
+            case REVERSE:
+                reverseCall();
+                break;
+
             case QUIT:
                 printf("Get 0, quit!\n");
                 break;
@@ -44,6 +48,7 @@ void ch3PrintMenu()
     printf("  1 COUNTDWO\n");
     printf("  2 MYATOI\n");
     printf("  3 SHELLSORT\n");
+    printf("  4 REVERSE\n");
     printf("  0 QUIT\n");
     printf("  Input: ");
 }
@@ -150,4 +155,26 @@ void print_array(int a[], int n)
     for (i = 0; i < n; ++i)
         printf("%3d", a[i]);
     printf("\n");
+}
+
+/* reverseCall: call reverse() */
+void reverseCall()
+{
+    char s[] = "Hi, Nanjing.";
+
+    printf("Before reverse: %s\n", s);
+    reverse(s);
+    printf("After reverse: %s\n", s);
+}
+
+/* reverse: reverse string s in place */
+void reverse(char s[])
+{
+    int c, i, j;
+
+    for (i = 0, j = strlen(s) - 1; i < j; ++i, --j) {
+        c = s[i];
+        s[i] = s[j];
+        s[j] = c;
+    }
 }

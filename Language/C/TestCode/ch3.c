@@ -29,6 +29,10 @@ void ch3Call()
                 reverseCall();
                 break;
 
+            case ITOA:
+                itoaCall();
+                break;
+
             case QUIT:
                 printf("Get 0, quit!\n");
                 break;
@@ -49,6 +53,7 @@ void ch3PrintMenu()
     printf("  2 MYATOI\n");
     printf("  3 SHELLSORT\n");
     printf("  4 REVERSE\n");
+    printf("  5 ITOA\n");
     printf("  0 QUIT\n");
     printf("  Input: ");
 }
@@ -177,4 +182,31 @@ void reverse(char s[])
         s[i] = s[j];
         s[j] = c;
     }
+}
+
+/* itoa: convert n to characters in s */
+void itoa(int n, char s[])
+{
+    int i, sign;
+
+    if ((sign = n) < 0)     /* record sign */
+        n = -n;             /* make n positive */
+    i = 0;
+    do {                    /* generate digits in reverse order */
+        s[i++] = n % 10 + '0';  /* get next digit */
+    } while ((n /= 10) > 0);    /* delete it */
+    if (sign < 0)
+        s[i++] = '-';
+    s[i] = 0;
+    reverse(s);
+}
+
+void itoaCall()
+{
+    int n;
+    char s[MAX];
+
+    n = -99;
+    itoa(n, s);
+    printf("n = %d, s = %s\n", n, s);
 }

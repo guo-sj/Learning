@@ -33,6 +33,10 @@ void ch3Call()
                 itoaCall();
                 break;
 
+            case TRIM:
+                trimCall();
+                break;
+
             case QUIT:
                 printf("Get 0, quit!\n");
                 break;
@@ -54,6 +58,7 @@ void ch3PrintMenu()
     printf("  3 SHELLSORT\n");
     printf("  4 REVERSE\n");
     printf("  5 ITOA\n");
+    printf("  6 TRIM\n");
     printf("  0 QUIT\n");
     printf("  Input: ");
 }
@@ -209,4 +214,25 @@ void itoaCall()
     n = -99;
     itoa(n, s);
     printf("n = %d, s = %s\n", n, s);
+}
+
+/* trim:  remove trailing blanks, tabs, newlines */
+int trim(char s[])
+{
+    int n;
+
+    for (n = strlen(s) - 1; n >= 0; --n)
+        if (s[n] != ' ' && s[n] != '\t' && s[n] != '\n')
+            break;
+    s[n+1] = '\0';
+    return n;
+}
+
+void trimCall()
+{
+    char s[] = "I have a dream.    ";    /* trailing 4 spaces */
+
+    printf("before:%s|", s);
+    trim(s);
+    printf("after:%s|", s);
 }

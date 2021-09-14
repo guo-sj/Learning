@@ -1,4 +1,4 @@
-#include "basicOperation.h"
+#include "arrayOperation.h"
 
 /* traverse_array:  print all the array elements one by one */
 void traverse_array(int a[], int length)

@@ -1,0 +1,37 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARRAY	main.c	/^    ARRAY = 1,$/;"	e	enum:main	file:
+DELETE_ARRAY	arrayBasicOperation.h	/^    DELETE_ARRAY,$/;"	e	enum:array
+INSERT_ARRAY	arrayBasicOperation.h	/^    INSERT_ARRAY,$/;"	e	enum:array
+SEARCH_ARRAY	arrayBasicOperation.h	/^    SEARCH_ARRAY,$/;"	e	enum:array
+TRAVERSE_ARRAY	arrayBasicOperation.h	/^    TRAVERSE_ARRAY = 1,$/;"	e	enum:array
+UPDATE_ARRAY	arrayBasicOperation.h	/^    UPDATE_ARRAY,$/;"	e	enum:array
+array	arrayBasicOperation.h	/^enum array {$/;"	g
+call_array_operation	arrayBasicOperation.c	/^void call_array_operation()$/;"	f
+call_delete_array	arrayBasicOperation.c	/^void call_delete_array(int a[], int *length)$/;"	f
+call_insert_array	arrayBasicOperation.c	/^void call_insert_array(int a[], int *length)$/;"	f
+call_search_array	arrayBasicOperation.c	/^void call_search_array(int a[], int length)$/;"	f
+call_traverse_array	arrayBasicOperation.c	/^void call_traverse_array(int a[], int length)$/;"	f
+call_update_array	arrayBasicOperation.c	/^void call_update_array(int a[], int length)$/;"	f
+current	linkedListOperation.h	/^} *head, *current;$/;"	v	typeref:struct:node
+data	linkedListOperation.h	/^    int data;$/;"	m	struct:node
+delete_array	arrayBasicOperation.c	/^void delete_array(int a[], int *length, int index)$/;"	f
+display_linklist	linkedListOperation.c	/^void display_linklist(struct node *head)$/;"	f
+head	linkedListOperation.h	/^} *head, *current;$/;"	v	typeref:struct:node
+insert_array	arrayBasicOperation.c	/^void insert_array(int a[], int *length, int elem, int index)$/;"	f
+key	linkedListOperation.h	/^    int key;$/;"	m	struct:node
+main	main.c	/^enum main {$/;"	g	file:
+main	main.c	/^int main()$/;"	f
+next	linkedListOperation.h	/^    struct node *next;$/;"	m	struct:node	typeref:struct:node::node
+node	linkedListOperation.h	/^struct node {$/;"	s
+objects	Makefile	/^objects = $(sources:.c=.o)$/;"	m
+print_array_menu	arrayBasicOperation.c	/^void print_array_menu()$/;"	f
+print_main_menu	main.c	/^void print_main_menu()$/;"	f
+search_array	arrayBasicOperation.c	/^int search_array(int a[], int length, int value)$/;"	f
+sources	Makefile	/^sources = basicOperation.c main.c$/;"	m
+traverse_array	arrayBasicOperation.c	/^void traverse_array(int a[], int length)$/;"	f
+update_array	arrayBasicOperation.c	/^void update_array(int a[], int index, int value)$/;"	f

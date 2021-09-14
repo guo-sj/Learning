@@ -1,4 +1,4 @@
-#include "array/basicOperation.h"
+#include "arrayOperation.h"
 
 enum main {
     ARRAY = 1,

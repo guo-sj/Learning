@@ -1,13 +1,16 @@
 
-sources = basicOperation.c main.c
+sources = arrayOperation.c linkedListOperation.c main.c
 
 objects = $(sources:.c=.o)
 
 dsa : $(objects)
 	cc -g3 -o $@ $^
 
-basicOperation.o : basicOperation.c
-	cc -g -c basicOperation.c
+arrayOperation.o : arrayOperation.c
+	cc -g -c arrayOperation.c
+
+linkedListOperation.o : linkedListOperation.c
+	cc -g -c linkedListOperation.c
 
 main.o : main.c
 	cc -g -c main.c

@@ -7,6 +7,7 @@
 #include "testextern.h"
 #include "quickSort.h"
 #include "ch3.h"
+#include "ch4.h"
 
 int main()
 {
@@ -204,6 +205,10 @@ int main()
                 ch3Call();
                 break;
 
+            case 29:
+                ch4_call();
+                break;
+
             default:
                 break;
         }
@@ -243,6 +248,7 @@ void printinfo(int funcname)
             printf("      26, binSearchCall\n");
             printf("      27, quickSortCall\n");
             printf("      28, ch3Call\n");
+            printf("      29, ch4_call\n");
             printf("      0, quit\n");
             printf("Input:");
             break;
@@ -554,20 +560,6 @@ void squeeze(char s[], int c)
         if (s[i] != c)
             s[j++] = s[i];
     s[j] = '\0';
-}
-
-/* mygetline: get a line from standard input */
-int mygetline(char s[], int len)
-{
-    int c, i;
-
-    for (i=0; i<len-1 && (c=getchar())!=EOF && c!='\n'; i++)
-        s[i] = c;
-    if (c == '\n')
-        s[i++] = c;
-    s[i] = '\0';
-
-    return i;
 }
 
 /* myStrcat: concatenate t to end of s; s must be big enough */
